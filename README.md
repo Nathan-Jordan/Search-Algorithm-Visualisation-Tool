@@ -46,5 +46,5 @@ The algorithms dropdown contains the following options:
 ## Visualisation buttons
 The buttons at the bottom of the main window are for when the search algorithm is being visualised, the _Pause/Resume_ button will either pause or resume the visualisation, the _<<_ or _>>_ buttons will step forwards or backwards through the states by 1 state (only when paused), and the _Stop_ button will stop visualisation entirely, allowing graph edits to take place.
 
-## Demonstration of useage
+## Demonstration of usage
 ![image](DemonstrationOfUsage.gif)
