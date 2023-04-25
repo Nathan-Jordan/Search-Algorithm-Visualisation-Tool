@@ -1,4 +1,4 @@
-# Search algorithm visualiser
+# Search Algorithm Visualisation Tool
 This is a tool to aid with learning how search algorithms work by visualising an algorithm step by step.
 
 # Dependencies
