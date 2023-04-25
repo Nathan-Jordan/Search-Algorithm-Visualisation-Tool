@@ -9,7 +9,7 @@ If Java runtime is installed you can just run the .jar file. If not, use "java -
 # Getting started
 Once opened you should see a window like the below.
 
-![image](Images/StartWindow.png)
+![image](StartWindow.png)
 
 The left window (the main window) contains the graph and the right window contains the pseudocode
 
@@ -21,7 +21,7 @@ The left window (the main window) contains the graph and the right window contai
 - Right click and drag to draw _edges_ between _nodes_, letting go of right click when hovering over another _node_.
 - Double left click on a _node_ to set the _node_ as a root/goal or unset the _node_ type.
 
-![image](Images/MainWindowActions.gif)
+![image](MainWindowActions.gif)
 
 ## Pseudocode window
 The pseudocode window is not interactive as is just there to provide help for learning a search algorithm.
@@ -47,4 +47,4 @@ The algorithms dropdown contains the following options:
 The buttons at the bottom of the main window are for when the search algorithm is being visualised, the _Pause/Resume_ button will either pause or resume the visualisation, the _<<_ or _>>_ buttons will step forwards or backwards through the states by 1 state (only when paused), and the _Stop_ button will stop visualisation entirely, allowing graph edits to take place.
 
 ## Demonstration of useage (sped up)
-![image](Images/DemonstrationOfUsage.gif)
+![image](DemonstrationOfUsage.gif)
