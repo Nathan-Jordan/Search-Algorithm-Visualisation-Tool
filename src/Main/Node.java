@@ -3,7 +3,7 @@ package Main;
 import java.awt.*;
 import java.util.Objects;
 
-public class Node implements Cloneable{
+public class Node implements Cloneable {
 
     public int nodeID;
     public String nodeLabel;
@@ -33,10 +33,6 @@ public class Node implements Cloneable{
 
     public void setNodeID(int nodeID) {
         this.nodeID = nodeID;
-    }
-
-    public void setNodeLabel(String nodeLabel) {
-        this.nodeLabel = nodeLabel;
     }
 
     public void setVisited(boolean visited) {
@@ -145,25 +141,6 @@ public class Node implements Cloneable{
         g2.setStroke(dashed);
         drawNodeCircle(g2, consideredColour, diameter + outerCirclePadding);
         View.resetStroke(g2);
-    }
-
-    public static Point getBoundaryPoint(Node node1, Node node2) {
-        //Returns the boundary point of node1 when linked to node2
-        //which is the point on node1's circle which faces towards node2
-
-        Point v1 = new Point(node1.x, node1.y);
-        Point v2 = new Point(node2.x, node2.y);
-
-        double dx = v1.x - v2.x;
-        double dy = v1.y - v2.y;
-        double dl = Math.sqrt(dx*dx + dy*dy);
-        double nx = dx/dl;
-        double ny = dy/dl;
-
-        Point p = new Point();
-        p.x = (int) (v1.x - (radius) * nx);
-        p.y = (int) (v1.y - (radius) * ny);
-        return p;
     }
 
     @Override

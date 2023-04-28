@@ -30,7 +30,7 @@ public class Visualiser {
         this.view.addVisualizer(this);
     }
 
-    public void visualizeAlgorithm(int indexToStartAt) {
+    public void visualiseAlgorithm(int indexToStartAt) {
         visualising = true;
         view.stepBackwards.setEnabled(false);
         view.stepForward.setEnabled(false);
@@ -54,8 +54,8 @@ public class Visualiser {
         algo.start();
     }
 
-    public void resumeVisualizationAtCurrentIndex() {
-        visualizeAlgorithm(currentIndex);
+    public void resumeVisualisationAtCurrentIndex() {
+        visualiseAlgorithm(currentIndex);
     }
 
     public void stepForwards() {
@@ -85,7 +85,7 @@ public class Visualiser {
         } else if (visualising) {
             view.pauseResume.setText("Pause");
 
-        //If end has been reached and stepped backwards
+        //If the visualisation has been restarted
         } else if (Objects.equals(view.pauseResume.getText(), "Restart") &&
                 currentIndex != stateList.size()) {
             view.stepForward.setEnabled(true);
@@ -104,11 +104,11 @@ public class Visualiser {
                 pseudocodeView.changeToPseudocode();
             }
 
-            pseudocodeView.setCurrentLineIndex(state.lineIndex);
+            pseudocodeView.setCurrentLineIndex(state.pseudocodeLineIndex);
             graph.updateNodes(state.nodes);
             graph.updateEdges(state.edges);
 
-            //Collection contains node information (stack/queue for BFS/DFS)
+            //Collection contains node information (stack/queue for BFS/DFS) - Future feature
             //System.out.println("UPDATING STATE: " + state.collection);
 
             pseudocodeView.repaint();
@@ -127,10 +127,6 @@ public class Visualiser {
         }
 
         return false;
-    }
-
-    public boolean stateListIsEmpty() {
-        return stateList.isEmpty();
     }
 
     public void addStateList(List<AlgorithmState> stateList) {

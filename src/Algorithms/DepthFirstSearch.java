@@ -11,7 +11,7 @@ public class DepthFirstSearch extends SearchAlgorithm {
 
 
     public DepthFirstSearch() {
-        addPseudocodeLine("Depth-first search");
+        addPseudocodeLine("Depth-First Search");
         addPseudocodeLine("let S be a stack");
         addPseudocodeLine("label <font color='Red'>root</font> as <font color='Blue'>visited</font>");
         addPseudocodeLine("S.push(<font color='Red'>root</font>)");
@@ -53,7 +53,6 @@ public class DepthFirstSearch extends SearchAlgorithm {
 
         //Set the root node as visited
         Node root = g.getRootNode();
-        root.setRootNode(true);
         root.setVisited(true);
         addCurrentState(s);
 
@@ -72,9 +71,6 @@ public class DepthFirstSearch extends SearchAlgorithm {
             //Set the node as the currently selected node
             node.setCurrentNode(true);
             addCurrentState(s);
-
-            //Increment node visited count
-            nodesVisitedCount++;
 
             addCurrentState(s);
             //If the node is the goal node

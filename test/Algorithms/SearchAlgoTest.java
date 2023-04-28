@@ -93,7 +93,7 @@ public class SearchAlgoTest {
         graph.addEdge(n4, n3);
 
         searchAlgorithm = new BreadthFirstSearch();
-        searchAlgorithm.init(graph, null, null);
+        searchAlgorithm.init(graph, null);
         List<AlgorithmState> states = searchAlgorithm.runAlgorithm();
 
 
@@ -136,7 +136,7 @@ public class SearchAlgoTest {
 
     private void runAlgorithm(SearchAlgorithm searchAlgo) {
         searchAlgorithm = searchAlgo;
-        searchAlgorithm.init(graph, null, null);
+        searchAlgorithm.init(graph, null);
         searchAlgorithm.runAlgorithm();
     }
     private void createConnectedGraph() {

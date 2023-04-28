@@ -260,7 +260,7 @@ public class Graph {
             addNode(node);
         }
 
-        //Triangulation sources I used to help implement Delaunay Triangulation
+        //Resources used to help implement Delaunay Triangulation
         //https://www.youtube.com/watch?v=4ySSsESzw2Y
         //https://en.wikipedia.org/wiki/Bowyer%E2%80%93Watson_algorithm
 
@@ -278,7 +278,7 @@ public class Graph {
         }
 
 
-        //Initialize the triangles list and add the super triangle to it
+        //Initialise the triangles list and add the super triangle to it
         ArrayList<List<Node>> triangles = new ArrayList<>();
         triangles.add(superTriangle);
 
@@ -294,7 +294,7 @@ public class Graph {
                 Node b = triangle.get(1);
                 Node c = triangle.get(2);
 
-                //Circumcenter calculation from:
+                //Circumcenter maths from:
                 //https://www.omnicalculator.com/math/circumcenter-of-a-triangle
                 double x1 = a.x;
                 double y1 = a.y;
@@ -352,7 +352,7 @@ public class Graph {
 
 
             //Add new triangles for each edge in the polygon
-            //since each edge contains 2 points adding the current node as the third/
+            //since each edge contains 2 points adding the current node as the third
             //point creates the new triangle
             for (List<Node> edge : polygon) {
                 Node b = edge.get(0);

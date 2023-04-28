@@ -9,9 +9,8 @@ import java.util.Queue;
 
 public class BreadthFirstSearch extends SearchAlgorithm {
 
-
     public BreadthFirstSearch() {
-        addPseudocodeLine("Breadth-first search");
+        addPseudocodeLine("Breadth-First Search");
         addPseudocodeLine("let Q be a queue");
         addPseudocodeLine("label <font color='Red'>root</font> as <font color='Blue'>visited</font>");
         addPseudocodeLine("Q.enqueue(<font color='Red'>root</font>)");
@@ -50,7 +49,6 @@ public class BreadthFirstSearch extends SearchAlgorithm {
 
         //Set the root node as visited
         Node root = g.getRootNode();
-        root.setRootNode(true);
         root.setVisited(true);
         addCurrentState(q);
 
@@ -69,9 +67,6 @@ public class BreadthFirstSearch extends SearchAlgorithm {
             //Set the node as the currently selected node
             node.setCurrentNode(true);
             addCurrentState(q);
-
-            //Increment node visited count
-            nodesVisitedCount++;
 
             addCurrentState(q);
             //If the node is the goal node

@@ -26,17 +26,21 @@ class NodeTest {
 
     @Test
     void getBoundaryPointX() {
+        Viewport viewport = new Viewport(null);
+
         Node node1 = new Node(10, 10);
         Node node2 = new Node(100, 10);
-        Point boundaryPoint = Node.getBoundaryPoint(node1, node2);
+        Point boundaryPoint = viewport.getBoundaryPointOfNode(node1, node2);
         assertEquals(node1.x + Node.radius, boundaryPoint.x);
     }
 
     @Test
     void getBoundaryPointY() {
+        Viewport viewport = new Viewport(null);
+
         Node node1 = new Node(10, 10);
         Node node2 = new Node(10, 100);
-        Point boundaryPoint = Node.getBoundaryPoint(node1, node2);
+        Point boundaryPoint = viewport.getBoundaryPointOfNode(node1, node2);
         assertEquals(node1.y + Node.radius, boundaryPoint.y);
     }
 }

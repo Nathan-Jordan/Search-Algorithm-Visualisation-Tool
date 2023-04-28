@@ -11,7 +11,7 @@ public class AStarSearch extends SearchAlgorithm {
 
 
     public AStarSearch() {
-        addPseudocodeLine("A* search");
+        addPseudocodeLine("A* Search");
         addPseudocodeLine("let <font color='Blue'>S</font> be a set");
         addPseudocodeLine("let dist and fScore be a map");
         addPseudocodeLine("populate maps by mapping all nodes to INFINITY");
@@ -114,9 +114,6 @@ public class AStarSearch extends SearchAlgorithm {
             //Set the node as the currently selected node
             current.setCurrentNode(true);
             addCurrentState(open);
-
-            //Increment node visited count
-            nodesVisitedCount++;
 
             addCurrentState(open);
             if (current.isGoalNode()) {

@@ -10,17 +10,14 @@ public abstract class SearchAlgorithm {
      ArrayList<PseudocodeLine> pseudocodeLines = new ArrayList<>();
 
      Graph g;
-     View view;
      PseudocodeView pseudoView;
      List<AlgorithmState> states;
      int pseudocodeLine = 0;
      boolean complete;
-     public int nodesVisitedCount = 0;
 
 
-     public void init(Graph g, View view, PseudocodeView pseudoView) {
+     public void init(Graph g, PseudocodeView pseudoView) {
           this.g = g;
-          this.view = view;
           this.pseudoView = pseudoView;
      }
      public abstract List<AlgorithmState> runAlgorithm();
@@ -101,10 +98,6 @@ public abstract class SearchAlgorithm {
 
           //'Returning' path list for pseudocode visualisation
           addCurrentState();
-     }
-
-     public void resetNodesVisitedCount() {
-          nodesVisitedCount = 0;
      }
 
      public ArrayList<PseudocodeLine> getPseudocodeLines() {

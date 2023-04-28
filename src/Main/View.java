@@ -57,23 +57,21 @@ public class View extends JComponent {
 
         pauseResume = new JButton("Pause");
         pauseResume.addActionListener(e -> {
-            if (!visualiser.stateListIsEmpty()) {
-                if (Objects.equals(pauseResume.getText(), "Pause")) {
-                    visualiser.visualising = false;
-                    stepForward.setEnabled(true);
-                    stepBackwards.setEnabled(true);
-                    pauseResume.setText("Resume");
-                    Log.logMessage("Pausing visualisation");
+            if (Objects.equals(pauseResume.getText(), "Pause")) {
+                visualiser.visualising = false;
+                stepForward.setEnabled(true);
+                stepBackwards.setEnabled(true);
+                pauseResume.setText("Resume");
+                Log.logMessage("Pausing visualisation");
 
-                } else if (Objects.equals(pauseResume.getText(), "Restart")) {
-                    pauseResume.setText("Pause");
-                    visualiser.visualizeAlgorithm(0);
-                    Log.logMessage("Restarting visualisation");
-                } else {
-                    visualiser.resumeVisualizationAtCurrentIndex();
-                    pauseResume.setText("Pause");
-                    Log.logMessage("Resuming visualisation");
-                }
+            } else if (Objects.equals(pauseResume.getText(), "Restart")) {
+                pauseResume.setText("Pause");
+                visualiser.visualiseAlgorithm(0);
+                Log.logMessage("Restarting visualisation");
+            } else {
+                visualiser.resumeVisualisationAtCurrentIndex();
+                pauseResume.setText("Pause");
+                Log.logMessage("Resuming visualisation");
             }
         });
 
@@ -180,7 +178,7 @@ public class View extends JComponent {
                 leftMouseDown = false;
 
                 //Reset right mouse button and edge drawings
-            } else if (e.getButton() == 3) {
+            } else if (e.getButton() == 3 && visualiser.visualiserStopped) {
                 rightMouseDown = false;
                 drawEdgeStart = null;
                 drawEdgeEnd = null;
@@ -295,16 +293,16 @@ public class View extends JComponent {
         //Draw edges (to go 'under' nodes)
         drawEdges(g2);
 
-        //Highlighting edge after all edges drawn
+        //Highlighting edge after all edges are drawn
         highlightEdge(g2);
 
         //Draw nodes
         drawNodes(g2);
 
-        //Highlighting node after all nodes drawn
+        //Highlighting node after all nodes are drawn
         highlightNode(g2);
 
-        //Draws edge between node and cursor if a node has been selected
+        //Draws an edge between node and cursor, if a node has been selected
         drawEdgeBetweenNodeAndCursor(g2);
     }
 
@@ -401,6 +399,7 @@ public class View extends JComponent {
 
     private void highlightNode(Graphics2D g2) {
         Node node = viewport.getNodeFromMouse(mouse, 2.1f);
+
         if (selectedNode != null) {
             node = selectedNode;
         }

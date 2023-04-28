@@ -9,7 +9,7 @@ import java.util.*;
 public class DijkstraSearch extends SearchAlgorithm{
 
     public DijkstraSearch() {
-        addPseudocodeLine("Dijkstra's algorithm");
+        addPseudocodeLine("Dijkstra's Algorithm");
         addPseudocodeLine("let <font color='Blue'>S</font> be a set");
         addPseudocodeLine("let dist be a map of node-double");
         addPseudocodeLine("for each <font color='#00B2B2'>node</font> in the graph");
@@ -112,9 +112,6 @@ public class DijkstraSearch extends SearchAlgorithm{
             //Set the node as the currently selected node
             current.setCurrentNode(true);
             addCurrentState();
-
-            //Increment node visited count
-            nodesVisitedCount++;
 
             addCurrentState();
             if (current.isGoalNode()) {

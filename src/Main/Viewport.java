@@ -14,6 +14,9 @@ public class Viewport {
     }
 
     public Point getBoundaryPointOfNode(Node node1, Node node2) {
+        //Returns the boundary point of node1 when linked to node2
+        //which is the point on node1's circle which faces towards node2
+
         double dx = node1.x - node2.x;
         double dy = node1.y - node2.y;
         double dL = Math.hypot(dx, dy);
@@ -79,8 +82,8 @@ public class Viewport {
         for (Node node : graph.getEdges().keySet()) {
             for (Edge edge : graph.getEdges().get(node)) {
                 //Get the boundary point of each node (point on the circumference where the line meets)
-                Point v1 = Node.getBoundaryPoint(node, edge.linkedNode);
-                Point v2 = Node.getBoundaryPoint(edge.linkedNode, node);
+                Point v1 = getBoundaryPointOfNode(node, edge.linkedNode);
+                Point v2 = getBoundaryPointOfNode(edge.linkedNode, node);
 
 
                 //http://www.sunshine2k.de/coding/java/PointOnLine/PointOnLine.html#step5

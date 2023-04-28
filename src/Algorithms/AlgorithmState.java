@@ -10,19 +10,19 @@ import java.util.Map;
 
 public class AlgorithmState {
 
-    public int lineIndex;
+    public int pseudocodeLineIndex;
     public List<Node> nodes;
     public Map<Node, List<Edge>> edges;
     public boolean complete;
     public Collection<Node> collection;
 
-    public AlgorithmState(int lineIndex, List<Node> nodes, Map<Node, List<Edge>> edges, boolean complete, Collection<Node> collection) {
-        this(lineIndex, nodes, edges, complete);
+    public AlgorithmState(int pseudocodeLineIndex, List<Node> nodes, Map<Node, List<Edge>> edges, boolean complete, Collection<Node> collection) {
+        this(pseudocodeLineIndex, nodes, edges, complete);
         this.collection = collection;
     }
 
-    public AlgorithmState(int lineIndex, List<Node> nodes, Map<Node, List<Edge>> edges, boolean complete) {
-        this.lineIndex = lineIndex;
+    public AlgorithmState(int pseudocodeLineIndex, List<Node> nodes, Map<Node, List<Edge>> edges, boolean complete) {
+        this.pseudocodeLineIndex = pseudocodeLineIndex;
         this.nodes = nodes;
         this.edges = edges;
         this.complete = complete;

@@ -18,7 +18,7 @@ public class Main extends Component {
     static JMenuItem bfs = new JMenuItem("Breadth-First Search");
     static JMenuItem dfs = new JMenuItem("Depth-First Search");
     static JMenuItem dijkstra = new JMenuItem("Dijkstra's Algorithm");
-    static JMenuItem aStar = new JMenuItem("A*");
+    static JMenuItem aStar = new JMenuItem("A* Search");
 
     static JMenuItem runAlgorithm = new JMenuItem("Run Algorithm");
     static JMenuItem resetNodes = new JMenuItem("Reset Nodes");
@@ -35,7 +35,7 @@ public class Main extends Component {
 
     public void init() {
         searchAlgorithm = new BreadthFirstSearch();
-        searchAlgorithm.init(graph, view, pseudocodeView);
+        searchAlgorithm.init(graph, pseudocodeView);
         pseudocodeView.setAlgorithm(searchAlgorithm);
     }
 
@@ -75,7 +75,7 @@ public class Main extends Component {
                 List<AlgorithmState> stateList = searchAlgorithm.runAlgorithm();
 
                 //Set pseudocode line to the start
-                pseudocodeView.currentLineIndex = 0;
+                pseudocodeView.setCurrentLineIndex(0);
 
                 //Add the states to the visualiser
                 visualiser.addStateList(stateList);
@@ -94,15 +94,14 @@ public class Main extends Component {
 
                 Log.logMessage("Starting visualisation");
                 //Start visualisation starting at the first state
-                visualiser.visualizeAlgorithm(0);
+                visualiser.visualiseAlgorithm(0);
             }
         });
         clearNodes.addActionListener(e -> {
             graph.clearNodes();
             view.repaint();
-            pseudocodeView.currentLineIndex = 0;
+            pseudocodeView.setCurrentLineIndex(0);
             pseudocodeView.changeToPseudocode();
-            pseudocodeView.repaint();
 
             //Enable stepping buttons
             view.setSteppingButtonsEnabled(false);
@@ -110,9 +109,8 @@ public class Main extends Component {
         resetNodes.addActionListener(e -> {
             graph.resetNodes();
             view.repaint();
-            pseudocodeView.currentLineIndex = 0;
+            pseudocodeView.setCurrentLineIndex(0);
             pseudocodeView.changeToPseudocode();
-            pseudocodeView.repaint();
 
             //Enable stepping buttons
             view.setSteppingButtonsEnabled(false);
@@ -242,8 +240,9 @@ public class Main extends Component {
         }
 
         this.searchAlgorithm = searchAlgorithm;
-        searchAlgorithm.init(graph, view, pseudocodeView);
+        searchAlgorithm.init(graph, pseudocodeView);
         pseudocodeView.setAlgorithm(searchAlgorithm);
+        pseudocodeView.setCurrentLineIndex(0);
 
         Log.logMessage("Algorithm changed to " + searchAlgorithm);
     }

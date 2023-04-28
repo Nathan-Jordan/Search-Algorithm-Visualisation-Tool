@@ -19,73 +19,91 @@ public class PseudocodeView extends JComponent {
     public int lineStartY = 30;
 
 
-
     public void setAlgorithm(SearchAlgorithm searchAlgorithm) {
         this.searchAlgorithm = searchAlgorithm;
+
+        //Get pseudocode of the search algorithm and repaint the panel
         pseudocodeLines = searchAlgorithm.getPseudocodeLines();
         repaint();
-    }
-
-    public void addText() {
-        removeAll();
-
-        JLabel lbl = new JLabel("<html>" + pseudocodeLines.get(0).text + "</html>");
-        Font font = new Font("Consolas", Font.BOLD, 16);
-        lbl.setFont(font);
-        lbl.setBounds(10, 2, getWidth(), lineHeight);
-        add(lbl);
-
-
-        for (int i = 1; i < pseudocodeLines.size(); i++) {
-            PseudocodeLine line = pseudocodeLines.get(i);
-
-            String lineText = "<html>" + line.text + "</html>";
-            lbl = new JLabel(lineText);
-            lbl.setFont(font);
-            lbl.setBounds(indentWidth * line.indent, lineStartY + (lineHeight * (i - 1)), getWidth(), lineHeight);
-            add(lbl);
-        }
     }
 
     public void setCurrentLineIndex(int lineIndex) {
         currentLineIndex = lineIndex;
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(460, 300);
+    public void changeToBackTracking() {
+        //Change the pseudocode to the backtracking pseudocode and repaint the panel
+        pseudocodeLines = searchAlgorithm.getBacktrackPseudocode();
+        repaint();
+    }
+
+    public void changeToPseudocode() {
+        //Change the pseudocode to the pseudocode of the algorithm and repaint the panel
+        pseudocodeLines = searchAlgorithm.getPseudocodeLines();
+        repaint();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
+        //Clear panel
+        removeAll();
         Graphics2D g2 = (Graphics2D) g;
 
+        //Draw background
         g2.setColor(Color.WHITE);
         g2.fillRect(0, 0, getWidth(), getHeight());
         g2.setColor(Color.BLACK);
 
 
-        //Line indicator
+        //Line highlighter indicator
         int topLine = lineHeight * currentLineIndex + lineStartY;
         int middle = lineHeight * currentLineIndex + 35;
         int bottomLine = topLine + lineHeight;
-
+        //Draw line highlight
         g2.drawLine(4, topLine, getWidth(), topLine);
         g2.fillOval(4, middle, 10, 10);
         g2.drawLine(4, bottomLine, getWidth(), bottomLine);
 
 
-        //Dividing line
+        //Draw dividing line
         g2.setStroke(new BasicStroke(2));
         g2.drawLine(2, 0, 2, getHeight());
-        addText();
+
+        //Draw pseudocode
+        drawPseudocode();
     }
 
-    public void changeToBackTracking() {
-        pseudocodeLines = searchAlgorithm.getBacktrackPseudocode();
+    public void drawPseudocode() {
+        //Create and wrap fist line of pseudocode (name) with html tags
+        JLabel pseudocodeLine = new JLabel("<HTML>" + pseudocodeLines.get(0).text + "</HTML>");
+
+        //Set the font and position of the pseudocode name
+        Font font = new Font("Consolas", Font.BOLD, 16);
+        pseudocodeLine.setFont(font);
+        pseudocodeLine.setBounds(10, 2, getWidth(), lineHeight);
+
+        //'Draw' the pseudocode name on the panel
+        add(pseudocodeLine);
+
+
+        //For the rest of the pseudocode lines
+        for (int i = 1; i < pseudocodeLines.size(); i++) {
+            PseudocodeLine line = pseudocodeLines.get(i);
+
+            //Wrap the pseudocode with html tags
+            pseudocodeLine = new JLabel("<html>" + line.text + "</html>");
+
+            //Set the font and position of the pseudocode
+            pseudocodeLine.setFont(font);
+            pseudocodeLine.setBounds(indentWidth * line.indent, lineStartY + (lineHeight * (i - 1)), getWidth(), lineHeight);
+
+            //'Draw' the pseudocode on the panel
+            add(pseudocodeLine);
+        }
     }
 
-    public void changeToPseudocode() {
-        pseudocodeLines = searchAlgorithm.getPseudocodeLines();
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(460, 300);
     }
 }

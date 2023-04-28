@@ -1,6 +1,6 @@
 package AlgorithmEvaluation;
 
-import AlgorithmEvaluation.Algorithms.*;
+import AlgorithmEvaluation.BaseAlgorithms.*;
 import Main.Graph;
 import Main.Log;
 import Main.Node;
